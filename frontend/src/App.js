@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api').replace(/\/$/, '');
 
 function App() {
   const [isRegistering, setIsRegistering] = useState(false);
@@ -27,7 +27,7 @@ function App() {
             : { email, password }
         )
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(data.error || 'Login failed. Please check your details.');
@@ -43,7 +43,10 @@ function App() {
           : `Welcome back, ${data.user.name || 'rider'}!`
       });
     } catch (error) {
-      setStatus({ type: 'error', message: error.message || 'Unable to connect to RideHub.' });
+      const message = error.name === 'TypeError'
+        ? `Cannot reach the RideHub API at ${API_URL}. Set REACT_APP_API_URL to your deployed backend URL.`
+        : error.message || 'Unable to connect to RideHub.';
+      setStatus({ type: 'error', message });
     } finally {
       setIsSubmitting(false);
     }
