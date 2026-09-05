@@ -95,7 +95,26 @@ ridehub-app/
 - **Insurance premium** (small cut per ride)
 - **Referral rewards** (discount given, commission gained)
 
-## 📞 Contact & Support
+## � Production Deployment
+
+This project is ready for a split deployment setup:
+
+### Web app on Vercel
+- Deploy the frontend folder as a Vercel project.
+- Build command: `npm install && npm run build`
+- Output directory: `build`
+- Config file: [frontend/vercel.json](frontend/vercel.json)
+
+### API on Render
+- Deploy the backend folder as a Render web service.
+- Config file: [render.yaml](render.yaml)
+- Required environment variables are listed in [backend/.env.example](backend/.env.example)
+
+### Production env setup
+- Frontend: [frontend/.env.example](frontend/.env.example)
+- Backend: [backend/.env.example](backend/.env.example)
+
+## �📞 Contact & Support
 
 For issues or suggestions, please create an issue in the repository.
 

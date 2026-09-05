@@ -1,0 +1,495 @@
+:root {
+  --bg: #07111f;
+  --panel: rgba(15, 23, 42, 0.9);
+  --panel-soft: #0f172a;
+  --card: rgba(15, 23, 42, 0.8);
+  --line: rgba(148, 163, 184, 0.18);
+  --text: #edf6ff;
+  --muted: #a8b7ce;
+  --primary: #38bdf8;
+  --primary-strong: #0ea5e9;
+  --accent: #34d399;
+  --warning: #fbbf24;
+  --shadow: rgba(8, 15, 29, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(52, 211, 153, 0.14), transparent 28%),
+    linear-gradient(135deg, #020817 0%, #0b1323 30%, #0f172a 100%);
+  color: var(--text);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.login-shell {
+  width: min(1100px, 100%);
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 28px;
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 60px rgba(2, 8, 23, 0.45);
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 16px 20px;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 28px;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #03111d;
+  font-weight: 900;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.tagline-wrap h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.info-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.info-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.green { background: var(--accent); }
+.dot.blue { background: var(--primary); }
+
+.login-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 26px;
+  background: rgba(8, 15, 29, 0.85);
+  border: 1px solid var(--line);
+}
+
+.login-panel::before {
+  content: "";
+  position: absolute;
+  inset: auto auto -30px -30px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 65%);
+  pointer-events: none;
+}
+
+.login-card {
+  padding: 22px 18px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--line);
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pill.online {
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--accent);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.login-form input {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.login-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.checkbox-row {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px !important;
+}
+
+.checkbox-row input {
+  width: 14px;
+  height: 14px;
+}
+
+.form-row a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.link-button {
+  background: transparent;
+  color: var(--primary);
+  padding: 0;
+  font: inherit;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #03111d;
+  font-weight: 800;
+  box-shadow: 0 12px 24px rgba(56, 189, 248, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+}
+
+.primary-btn:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+.full {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.form-status {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.form-status.success { color: var(--accent); }
+.form-status.error { color: #fda4af; }
+
+.account-switch {
+  margin: 2px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.bike-scene {
+  position: relative;
+  min-height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(52, 211, 153, 0.12));
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.road-line {
+  position: absolute;
+  bottom: 22px;
+  left: 6%;
+  width: 88%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.1), rgba(56, 189, 248, 0.9), rgba(148, 163, 184, 0.1));
+  animation: roadMove 2s linear infinite;
+}
+
+.bike {
+  position: relative;
+  width: 210px;
+  height: 140px;
+  transform: translateY(10px);
+}
+
+.wheel {
+  position: absolute;
+  bottom: 0;
+  width: 62px;
+  height: 62px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 4px solid #dce7f7;
+  border-radius: 50%;
+  animation: wheelSpin 0.8s linear infinite;
+}
+
+.wheel-left { left: 10px; }
+.wheel-right { right: 14px; }
+
+.rim {
+  position: absolute;
+  inset: 12px;
+  border: 3px solid rgba(56, 189, 248, 0.9);
+  border-radius: 50%;
+}
+
+.frame {
+  position: absolute;
+  background: linear-gradient(135deg, #f8fafc, #cbd5e1);
+  border-radius: 10px;
+}
+
+.frame-top {
+  left: 76px;
+  top: 42px;
+  width: 88px;
+  height: 6px;
+  transform: rotate(18deg);
+}
+
+.frame-main {
+  left: 64px;
+  bottom: 30px;
+  width: 120px;
+  height: 5px;
+  transform: rotate(-10deg);
+}
+
+.frame-seat {
+  left: 104px;
+  top: 16px;
+  width: 48px;
+  height: 5px;
+  transform: rotate(90deg);
+}
+
+.frame-handle {
+  left: 148px;
+  top: 26px;
+  width: 28px;
+  height: 5px;
+  transform: rotate(30deg);
+}
+
+.rider {
+  position: absolute;
+  left: 88px;
+  bottom: 36px;
+  width: 46px;
+  height: 76px;
+  animation: riderBob 1.2s ease-in-out infinite;
+}
+
+.head {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f8d8b4;
+}
+
+.body {
+  position: absolute;
+  left: 8px;
+  top: 18px;
+  width: 30px;
+  height: 32px;
+  border-radius: 16px 16px 12px 12px;
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+}
+
+.arm {
+  position: absolute;
+  top: 24px;
+  width: 18px;
+  height: 5px;
+  background: #f8d8b4;
+  border-radius: 8px;
+}
+
+.arm-left {
+  left: -4px;
+  transform: rotate(32deg);
+}
+
+.arm-right {
+  right: -2px;
+  transform: rotate(-40deg);
+}
+
+.leg {
+  position: absolute;
+  bottom: 0;
+  width: 16px;
+  height: 28px;
+  background: #edf6ff;
+  border-radius: 16px;
+}
+
+.leg-left {
+  left: 10px;
+  transform: rotate(20deg);
+}
+
+.leg-right {
+  right: 8px;
+  transform: rotate(-20deg);
+}
+
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes riderBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes roadMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 120px 0; }
+}
+
+@media (max-width: 900px) {
+  .login-shell,
+  .login-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .login-shell {
+    padding: 16px;
+  }
+
+  .brand-block {
+    padding: 12px 4px 0;
+  }
+
+  .info-boxes,
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
