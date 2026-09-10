@@ -30,8 +30,8 @@
     "stripe": "^11.0.0",
     "twilio": "^3.80.0",
     "socket.io": "^4.5.4",
-    "multer": "^1.4.5-lts.1",
-    "cloudinary": "^1.33.0"
+    "multer": "^2.3.0",
+    "cloudinary": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
